@@ -13,9 +13,7 @@
 		<div class="center">
 			<div class="header material">Abstract Art?</div>
 		</div>
-		<div class="large-canv" id="largec">
-
-		</div>
+		<div class="large-canv" id="largec"></div>
 		<div class="center-canv" id="ccanv">
 			<div class="art-cont material" id="paper-cont">
 				<a class="save-image canvas-button" id="save"><i class="fa fa-floppy-o"></i></a>
@@ -24,42 +22,43 @@
 				<canvas id="paper"></canvas>
 			</div>
 			<div class="art-opt material" id="options">
-					<div class="in-title">Pixel Size</div>
-					<input type="number" id="pixel" value="5" min="1"><br/>
-					<div class="in-title">Color Palette</div>
-					<select id="palette">
-					  	<option value="warm" selected="selected">Warm</option>
-					  	<option value="blue">Bluueeee</option>
-					  	<option value="lblue">A lighter blue?</option>
-					  	<option value="nature">Nature</option>
-					  	<option value="purple">Purple-y</option>
-					  	<option value="bw">Black & White</option>
-					  	<option value="matrix">Matrix</option>
-					  	<option value="rainbow">Rainbow?</option>
-					  	<option value="totalrandom">Random</option>
-					</select>
-					<div class="in-title">Algorithm</div>
-					<select id="algorithm">
-					  	<option value="standard" selected="selected">Standard</option>
-					  	<option value="hline">Horizontal Line</option>
-					  	<option value="vline">Vertical Line</option>
-					  	<option value="blotch">Blotch</option>
-					  	<option value="smear">Smear</option>
-					  	<option value="winds">Winds</option>
-					  	<option value="boxes">Boxes</option>
-					</select>
-					<div class="in-title">*Rendering of the image may take a couple seconds</div>
-					<input value="Generate Art" type="button" id="generate">
+				<div class="in-title">Pixel Size</div>
+				<input type="number" id="pixel" value="5" min="1"><br/>
+				<div class="in-title">Color Palette</div>
+				<select id="palette">
+					  <option value="warm" selected="selected">Warm</option>
+					  <option value="blue">Bluueeee</option>
+					  <option value="lblue">A lighter blue?</option>
+					  <option value="nature">Nature</option>
+					  <option value="purple">Purple-y</option>
+					  <option value="bw">Black & White</option>
+					  <option value="matrix">Matrix</option>
+					  <option value="rainbow">Rainbow?</option>
+					  <option value="totalrandom">Random</option>
+				</select>
+				<div class="in-title">Algorithm</div>
+				<select id="algorithm">
+					  <option value="standard" selected="selected">Standard</option>
+					  <option value="hline">Horizontal Line</option>
+					  <option value="vline">Vertical Line</option>
+					  <option value="blotch">Blotch</option>
+					  <option value="smear">Smear</option>
+					  <option value="winds">Winds</option>
+					  <option value="boxes">Boxes</option>
+				</select>
+				<div class="in-title">*Rendering of the image may take a couple seconds</div>
+				<input value="Generate Art" type="button" id="generate">
 			</div>
 			<div style="clear:both;"></div>
 		</div>
 		<div class="center">
-			<div class="stat material">Stats</div>
+			<div class="stats-header material">Stats</div>
 			<div class="stats material" id="top">Generate an image to get stats</div>
 			<div class="statsm material" id="misc">Generate an image to get stats</div>
 			<div style="clear:both;"></div>
 			<div class="footer-info">Created by <a href="https://twitter.com/etetepetete" target="_blank">@etetepetete</a> - <a href="https://github.com/petetetete/art-generate" target="_blank">GitHub</a></div>
 		</div>
+		<canvas id="hidden-canv" width=100 height=100></canvas>
 		<script src="js/base.js" type="text/javascript" defer></script>
 	</body>
-</html?
+</html>

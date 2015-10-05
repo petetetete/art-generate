@@ -1,3 +1,4 @@
+// Function used to ensure canvas fits parent accurately
 function fitToContainer(canvas){
   	canvas.style.width ='100%';
   	canvas.style.height='100%';
@@ -5,6 +6,7 @@ function fitToContainer(canvas){
   	canvas.height = canvas.offsetHeight;
 }
 
+// Function used to get a random color from the appropriate palette
 function getColor(pal) {
 	if (pal === "warm") {
 		r = getRandomInt(150,255);
@@ -59,6 +61,7 @@ function getColor(pal) {
 	}
 }
 
+// Function used to draw the "art" based off of the given parameters
 function draw(canvas, pixel, pal, alg) {
 	var ctx=canvas.getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -178,9 +181,24 @@ function draw(canvas, pixel, pal, alg) {
 	fillStats(colorCount, totalPixels, time);
 
 	// Change favicon dynamically
-	document.getElementById("icon").href = canvas.toDataURL();
+	var hC = document.getElementById("hidden-canv");
+	var hCtx = hC.getContext("2d");
+	var thumbImg = document.createElement('img');
+
+	thumbImg.src = canvas.toDataURL();
+	thumbImg.onload = function() {
+	    hCtx.save();
+	    hCtx.beginPath();
+	    hCtx.arc(50, 50, 50, 0, Math.PI * 2, true);
+	    hCtx.closePath();
+	    hCtx.clip();
+	    hCtx.drawImage(thumbImg, 0, 0, 100, 100);
+	    hCtx.restore();
+	    document.getElementById("icon").href = hC.toDataURL();
+	};
 }
 
+// Determine and fill the stats section
 function fillStats(cC, tP, t) {
 	var top5 = [];
 	cCSorted = getSortedKeys(cC).reverse();
@@ -217,6 +235,7 @@ function fillStats(cC, tP, t) {
 	misc.innerHTML += "<div class='stat-misc'>Darkest Color - <span style='color:"+darkColor+"'>"+darkColor+"</span></div>";
 }
 
+// Clear and download canvas button functionality
 function clearCanvas() {
 	var ctx=document.getElementById('paper').getContext("2d");
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -233,6 +252,7 @@ function downloadCanvas(link, canvasId, filename) {
     link.download = filename;
 }
 
+// Functions used to toggle canvas
 function enlargeCanvas() {
 	var ccont = document.getElementById('paper-cont');
 	var copt = document.getElementById('options');
@@ -262,6 +282,7 @@ function minimizeCanvas() {
     fitToContainer(document.getElementById('paper'));
 }
 
+// Utility functions used throughout the program
 function getSortedKeys(obj) {
     var keys = []; for(var key in obj) keys.push(key);
     return keys.sort(function(a,b){return obj[a]-obj[b]});
@@ -280,32 +301,42 @@ function hexToRgb(hex) {
     return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
 }
 
+// Handle window resize, in particular zooming in to mobile size
 window.onresize = function() {
     if (window.innerWidth < 960) minimizeCanvas();
 }
 
+// First load initialization
 var large = false;
 var canvas = document.getElementById('paper');
 fitToContainer(canvas);
 
+// Handle clicking of the generate canvas button
 document.getElementById("generate").addEventListener("click", function() {
-	fitToContainer(document.getElementById('paper'));
-	p = document.getElementById('pixel').value;
+	fitToContainer(document.getElementById('paper')); // Ensure canvas is properly sized
+
+	// Fetch user inputs
+	p = document.getElementById('pixel').value; 
 	pal = document.getElementById('palette').value;
 	alg = document.getElementById('algorithm').value;
+
+	// Regular expression to ensure the user entered a valid pixel size
 	var regex=/^[0-9]+([.][0-9]+)?$/;
     if (p.match(regex) && p!=="0") draw(canvas, p, pal, alg);
     else alert("That's not a valid number you silly goose.")
 }, false);
 
+// Handle clicking of canvas save button
 document.getElementById('save').addEventListener('click', function() {
     downloadCanvas(this, 'paper', 'totallyart.png');
 }, false);
 
+// Handle clicking of canvas clear
 document.getElementById('clear').addEventListener('click', function() {
     clearCanvas();
 }, false);
 
+// Handle clicking of canvas toggle
 document.getElementById('large').addEventListener('click', function() {
 	if (!large) enlargeCanvas();
 	else minimizeCanvas();
