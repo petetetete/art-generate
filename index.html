@@ -16,9 +16,9 @@
 		<div class="large-canv" id="largec"></div>
 		<div class="center-canv" id="ccanv">
 			<div class="art-cont material" id="paper-cont">
-				<a class="save-image canvas-button" id="save"><i class="fa fa-floppy-o"></i></a>
-				<a class="clear-image canvas-button" id="clear"><i class="fa fa-trash-o"></i></a>
-				<a class="make-large canvas-button" id="large"><i class="fa fa-expand"></i></a>
+				<a class="save-image canvas-button" id="save" title="Download Image"><i class="fa fa-floppy-o"></i></a>
+				<a class="clear-image canvas-button" id="clear" title="Clear Image"><i class="fa fa-trash-o"></i></a>
+				<a class="make-large canvas-button" id="large" title="Expand Image"><i class="fa fa-expand"></i></a>
 				<canvas id="paper"></canvas>
 			</div>
 			<div class="art-opt material" id="options">
@@ -41,10 +41,11 @@
 					  <option value="standard" selected="selected">Standard</option>
 					  <option value="hline">Horizontal Line</option>
 					  <option value="vline">Vertical Line</option>
-					  <option value="blotch">Blotch</option>
+					  <option value="sparse">Sparse</option>
 					  <option value="smear">Smear</option>
 					  <option value="winds">Winds</option>
 					  <option value="boxes">Boxes</option>
+					  <option value="diag">Diagonal</option>
 				</select>
 				<div class="in-title">*Rendering of the image may take a couple seconds</div>
 				<input value="Generate Art" type="button" id="generate">
