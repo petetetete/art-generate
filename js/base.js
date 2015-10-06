@@ -113,7 +113,7 @@ function draw(canvas, pixel, pal, alg) {
 		}
 	}
 
-	if (alg === "sparse") {
+	if (alg === "blotch") {
 		var lastColor = getColor(pal);
 		for (var i=0;i<(w/pixel);i++) {
 			for (var j=0;j<(h/pixel);j++) {
@@ -162,30 +162,10 @@ function draw(canvas, pixel, pal, alg) {
 		var mainColor = getColor(pal);
 		for (var i=0;i<(w/pixel);i++) {
 			for (var j=0;j<(h/pixel);j++) {
-				if (i%Math.floor(w/(pixel*10))===0 && getRandomInt(1,20) >= 2) color = mainColor;
+				if (i%Math.floor(w/(pixel*10))===0) color = mainColor;
 				else {
-					if (j%Math.floor(w/(pixel*10))===0 && getRandomInt(1,20) >= 2) color = mainColor;
+					if (j%Math.floor(w/(pixel*10))===0) color = mainColor;
 					else color = getColor(pal);
-				}
-				ctx.fillStyle=color;
-				ctx.fillRect(pixel*i,pixel*j,p,p);
-				// Track stats
-				if (colorCount[color]) ++colorCount[color];
-				else colorCount[color] = 1;
-			}
-		}
-	}
-
-	if (alg === "diag") {
-		var mainColor = getColor(pal);
-		for (var i=0;i<(w/pixel);i++) {
-			
-			for (var j=0;j<(h/pixel);j++) {
-				if ((j+i)%Math.floor(w/(pixel*10)) === 0 && getRandomInt(1,20) >= 2) {
-					color = mainColor;
-				}
-				else {
-					color = getColor(pal);
 				}
 				ctx.fillStyle=color;
 				ctx.fillRect(pixel*i,pixel*j,p,p);
