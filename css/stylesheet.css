@@ -46,14 +46,14 @@ a:active {color: inherit;}
 
 .material {
 	background-color: #fff;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,.18), 0 0 2px 0 rgba(0,0,0,.2);
-	z-index: 0;
-	padding: 10px;
-	margin:5px 0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.18), 0 0 2px 0 rgba(0,0,0,.2);
+    z-index: 0;
+    padding: 10px;
+    margin:5px 0;
 
-	-moz-box-sizing: border-box; 
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
 }
 
 .art-cont {
@@ -107,8 +107,8 @@ a:active {color: inherit;}
 	border:1px solid #BDBDBD;
 
 	-moz-box-sizing: border-box; 
-	-webkit-box-sizing: border-box; 
-	box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+     box-sizing: border-box; 
 }
 
 .in-title {
@@ -188,9 +188,6 @@ a:active {color: inherit;}
 	margin-bottom:5px;
 	font-size:1.2em;
 	text-align:center;
-	white-space: nowrap;
-  	overflow: hidden;
-	text-overflow:ellipsis;
 }
 
 #hidden-canv {display:none;}

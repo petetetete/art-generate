@@ -207,14 +207,14 @@ function draw(canvas, pixel, pal, alg) {
 
 	thumbImg.src = canvas.toDataURL();
 	thumbImg.onload = function() {
-		hCtx.save();
-		hCtx.beginPath();
-		hCtx.arc(50, 50, 50, 0, Math.PI * 2, true);
-		hCtx.closePath();
-		hCtx.clip();
-		hCtx.drawImage(thumbImg, 0, 0, 100, 100);
-		hCtx.restore();
-		document.getElementById("icon").href = hC.toDataURL();
+	    hCtx.save();
+	    hCtx.beginPath();
+	    hCtx.arc(50, 50, 50, 0, Math.PI * 2, true);
+	    hCtx.closePath();
+	    hCtx.clip();
+	    hCtx.drawImage(thumbImg, 0, 0, 100, 100);
+	    hCtx.restore();
+	    document.getElementById("icon").href = hC.toDataURL();
 	};
 }
 
@@ -268,8 +268,8 @@ function clearCanvas() {
 
 function downloadCanvas(link, canvasId, filename) {
 	console.log("here");
-	link.href = document.getElementById(canvasId).toDataURL();
-	link.download = filename;
+    link.href = document.getElementById(canvasId).toDataURL();
+    link.download = filename;
 }
 
 // Functions used to toggle canvas
@@ -285,7 +285,7 @@ function enlargeCanvas() {
 	large = true;
 
 	clearCanvas();
-	fitToContainer(document.getElementById('paper'));
+    fitToContainer(document.getElementById('paper'));
 }
 
 function minimizeCanvas() {
@@ -299,33 +299,31 @@ function minimizeCanvas() {
 	large = false;
 
 	clearCanvas();
-	fitToContainer(document.getElementById('paper'));
+    fitToContainer(document.getElementById('paper'));
 }
 
 // Utility functions used throughout the program
 function getSortedKeys(obj) {
-	var keys = []; for(var key in obj) keys.push(key);
-	return keys.sort(function(a,b){return obj[a]-obj[b]});
+    var keys = []; for(var key in obj) keys.push(key);
+    return keys.sort(function(a,b){return obj[a]-obj[b]});
 }
 
 function getRandomInt(min, max) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function rgbToHex(r, g, b) {
-	return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
 function hexToRgb(hex) {
-	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)] : null;
 }
 
 // Handle window resize, in particular zooming in to mobile size
 window.onresize = function() {
-	if (window.innerWidth < 960 && large) {
-		minimizeCanvas();
-	}
+    if (window.innerWidth < 960) minimizeCanvas();
 }
 
 // First load initialization
@@ -344,18 +342,18 @@ document.getElementById("generate").addEventListener("click", function() {
 
 	// Regular expression to ensure the user entered a valid pixel size
 	var regex=/^[0-9]+([.][0-9]+)?$/;
-	if (p.match(regex) && p!=="0") draw(canvas, p, pal, alg);
-	else alert("That's not a valid number you silly goose.")
+    if (p.match(regex) && p!=="0") draw(canvas, p, pal, alg);
+    else alert("That's not a valid number you silly goose.")
 }, false);
 
 // Handle clicking of canvas save button
 document.getElementById('save').addEventListener('click', function() {
-	downloadCanvas(this, 'paper', 'totallyart.png');
+    downloadCanvas(this, 'paper', 'totallyart.png');
 }, false);
 
 // Handle clicking of canvas clear
 document.getElementById('clear').addEventListener('click', function() {
-	clearCanvas();
+    clearCanvas();
 }, false);
 
 // Handle clicking of canvas toggle
